@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<style>
+    #error1,#error2,#error3,#error4{
+        color: red;
+    }
+  #imgu{
+    width: 600px;
+    height: 700px;
+  }
+ 
+</style>
+</head>
+<body>
+    <!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right" style="
+              background: hsla(0, 0%, 100%, 0.55);
+              backdrop-filter: blur(30px);
+              ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">Sign up </h2>
+              <form  action="" name="myForm" onsubmit="sub()">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                
+                  <div class="form-outline mb-4">
+                    <div class="form-outline">
+                        <label class="form-label" for="Username"> Username</label>
+                        <input type="text" placeholder="Choose a username" id="Username" class="form-control" onkeyup="validateU()" /><br>
+                        <span id="error1" ></span><br>
+                    </div>
+                  </div>
+                
+  
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="emailF">Email address</label>
+                    <input type="email" placeholder="Enter your email" id="emailF" class="form-control" onkeyup="validateE()"/><br>
+                    <span id="error2" ></span><br>
+                </div>
+  
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" placeholder="Enter a strong password" id="password" class="form-control" onkeyup="validateP()" /><br>
+                    <span id="error3" ></span><br>
+                 
+                </div>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="Cpassword">Confirm Password</label>
+                    <input type="password" placeholder="Reenter your password" id="Cpassword" class="form-control" onkeyup="validateCP()"/><br>
+                    <span id="error4" ></span><br>
+                </div>
+    
+                <!-- Submit button -->
+                
+                <button type="submit" class="btn btn-success
+                col-12 mb-4">
+                Sign up
+                </button>
+            
+               
+              </form>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-5 mb-1 mb-lg-0   ">
+          <img src="image1.png" alt="" id="imgu"/>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+  <script>
+    var Username=document.getElementById("Username");
+    var error1=document.getElementById("error1");
+    var emailF=document.getElementById("emailF");
+    var error2=document.getElementById("error2");
+    var password=document.getElementById("password"); 
+    var error3=document.getElementById("error3");
+    var Cpassword=document.getElementById("Cpassword"); 
+    var error4=document.getElementById("error4");
+   
+    function validateU(){
+    if(Username.value==""){
+        error1.innerHTML="Username cannot be blank"; 
+        Username.style.borderColor="red";
+        return false;
+    }
+    if(!Username.value.match(/^[A-Za-z]{3,25}$/)){
+        error1.innerHTML="Username must be between 3 and 25 characters"; 
+        Username.style.borderColor="red";
+        return false;
+    }
+    
+    error1.innerHTML="";
+    Username.style.borderColor="green";
+    return true;
+   }  
+   function validateE(){
+    if(emailF.value==""){
+        error2.innerHTML="Email cannot be blank"; 
+        emailF.style.borderColor="red";
+        return false;
+    }
+    if(!emailF.value.match(/^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+        error2.innerHTML="Email is not valid"; 
+        emailF.style.borderColor="red";
+        return false;
+    }
+     
+    error2.innerHTML="";
+    emailF.style.borderColor="green";
+    return true;
+   } 
+
+   function validateP(){
+    if(password.value==""){
+        error3.innerHTML="Password can not be blank"; 
+        password.style.borderColor="red";
+        return false;
+    }
+    if(!password.value.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")){
+        error3.innerHTML="Password must has at least 8 characters that include at least 1 lowercase,\n 1 uppercase characters,1 number,and 1 special character in (!@#$%^&*)  "; 
+        password.style.borderColor="red";
+        return false;
+    }
+     
+    error3.innerHTML="";
+    password.style.borderColor="green";
+    return true;
+   }  
+     
+   function validateCP(){
+    if(Cpassword.value==""){
+        error4.innerHTML="Password can not be blank"; 
+        Cpassword.style.borderColor="red";
+        return false;
+    }
+    if(Cpassword.value !=password.value){
+        error4.innerHTML="The password does not match"; 
+        Cpassword.style.borderColor="red";
+        return false;
+    }
+     
+    error4.innerHTML="";
+    Cpassword.style.borderColor="green";
+    return true;
+   }  
+    function sub(){
+      if(validateU()==true&&validateE()==true&&validateP()==true&&validateCP()==true){
+        document.querySelector("form").setAttribute("action","home.html");
+  
+}
+      
+    }
+
+</script>
+</body>
+</html>
